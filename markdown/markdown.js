@@ -1,5 +1,5 @@
-const template = document.createElement('template');
-template.innerHTML=`
+const editor_template = document.createElement('template');
+editor_template.innerHTML=`
   <style>
     #markdown{
       display: flex;
@@ -31,6 +31,13 @@ template.innerHTML=`
   </div>
 `
 
+const display_template = document.createElement('template');
+display_template.innerHTML = `
+  <div id="markdown">
+  </div>
+`
+
+
 class Markdown extends HTMLElement{
 
   // markdown_to_html transform the markdown and displays it
@@ -43,7 +50,6 @@ class Markdown extends HTMLElement{
     // transform the markdown in html
     // insert the html in the output
     const output = this.shadowRoot.querySelector('#markdown-output');
-    console.log(output);
     output.innerHTML = toHtml(markdown_text);
   }
 
@@ -51,14 +57,26 @@ class Markdown extends HTMLElement{
     super();
 
     this.attachShadow({mode: 'open'});
-    this.shadowRoot.appendChild(
-      template.content.cloneNode(true)
-    );
 
-    // Connect the button to the effect of translating
-    this.shadowRoot.querySelector('button').onclick= this.markdown_to_html;
+    // if there is text or the show editor is inactive
+    const show_editor = this.getAttribute('editor') !== null;
+    if(this.innerHTML || !show_editor){
 
-    console.log(this.shadowRoot);
+      this.shadowRoot.appendChild(
+        display_template.content.cloneNode(true)
+      );
+
+      this.shadowRoot.querySelector('div').innerHTML = toHtml(this.innerHTML);
+
+    } else {
+
+      this.shadowRoot.appendChild(
+        editor_template.content.cloneNode(true)
+      );
+
+      // Connect the button to the effect of translating
+      this.shadowRoot.querySelector('button').onclick= this.markdown_to_html;
+    }
   }
 }
 
