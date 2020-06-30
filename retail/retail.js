@@ -118,28 +118,6 @@ class productCard extends HTMLElement{
       this.shadowRoot.querySelector('#imageDisplay div').remove();
       this.shadowRoot.querySelector('#original-price').remove();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    if (discount === null){
-    }
-
-
-    this.shadowRoot.querySelector('#title').innerHTML =
-      this.getAttribute('title');
-    this.shadowRoot.querySelector('#title').innerHTML =
-      this.getAttribute('title');
-
-
   }
 }
 

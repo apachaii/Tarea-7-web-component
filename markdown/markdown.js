@@ -31,9 +31,9 @@ template.innerHTML=`
   </div>
 `
 
-class Markup extends HTMLElement{
+class Markdown extends HTMLElement{
 
-  // markup_to_html transform the markup and displays it
+  // markup_to_html transform the markdown and displays it
   markup_to_html = () => {
 
     // get the text from the input
@@ -41,9 +41,9 @@ class Markup extends HTMLElement{
     const markup_text = text_input.value;
     console.log(markup_text);
 
-    // transform the markup in html
+    // transform the markdown in html
     // insert the html in the output
-    this.shadowRoot.querySelector('#markup-output').innerHTML = toHtml(markup_text);
+    this.shadowRoot.querySelector('#markdown-output').innerHTML = toHtml(markup_text);
   }
 
   constructor() {
@@ -61,4 +61,4 @@ class Markup extends HTMLElement{
   }
 }
 
-window.customElements.define('inserted-markup', Markup);
+window.customElements.define('inserted-markdown', Markdown);
