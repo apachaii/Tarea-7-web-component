@@ -1,49 +1,50 @@
 const template = document.createElement('template');
 template.innerHTML=`
   <style>
-    #markup{
+    #markdown{
       display: flex;
       height: 100%;
     }
-    #markup-input{
+    #markdown-input{
       flex: 50%;
       
       display: flex;
       flex-direction: column;
     }
-    #markup-input textarea{
+    #markdown-input textarea{
       flex: 1;
     }
-    #markup-output{
+    #markdown-output{
       flex: 50%;
       background-color: white;
       border: black 2px;
     }
   </style>
-  <div id="markup">
-    <div id="markup-input">
-      <h1>Markup:</h1>
+  <div id="markdown">
+    <div id="markdown-input">
+      <h1>markdown:</h1>
       <textarea id="text_input"></textarea>
       <button type="button">Parse</button> 
     </div>
-    <div id="markup-output">
+    <div id="markdown-output">
     </div>
   </div>
 `
 
 class Markdown extends HTMLElement{
 
-  // markup_to_html transform the markdown and displays it
-  markup_to_html = () => {
+  // markdown_to_html transform the markdown and displays it
+  markdown_to_html = () => {
 
     // get the text from the input
     const text_input = this.shadowRoot.querySelector('#text_input');
-    const markup_text = text_input.value;
-    console.log(markup_text);
+    const markdown_text = text_input.value;
 
     // transform the markdown in html
     // insert the html in the output
-    this.shadowRoot.querySelector('#markdown-output').innerHTML = toHtml(markup_text);
+    const output = this.shadowRoot.querySelector('#markdown-output');
+    console.log(output);
+    output.innerHTML = toHtml(markdown_text);
   }
 
   constructor() {
@@ -55,7 +56,7 @@ class Markdown extends HTMLElement{
     );
 
     // Connect the button to the effect of translating
-    this.shadowRoot.querySelector('button').onclick= this.markup_to_html;
+    this.shadowRoot.querySelector('button').onclick= this.markdown_to_html;
 
     console.log(this.shadowRoot);
   }
