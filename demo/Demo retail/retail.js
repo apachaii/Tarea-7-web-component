@@ -13,6 +13,10 @@ template.innerHTML=`
       max-width: 100%;
       max-height: 100%;
     }
+    img{
+      width: 200px;
+      height: 200px;
+    }
     #imageDisplay div{
       position: absolute;
       top: 0;

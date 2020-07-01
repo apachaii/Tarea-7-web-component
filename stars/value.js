@@ -1,4 +1,3 @@
-<script src="app.js"></script>
 
 let product2=document.getElementById('img1').getAttribute('value');
 
