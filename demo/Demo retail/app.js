@@ -16,7 +16,7 @@ for (let i = 1; i < 16; i++) {
     retailcard.setAttribute("title",`Perro ${i}`)
     retailcard.setAttribute("discount",`${random(0,100)}`)
     retailcard.setAttribute("original_price",`${random(1000,10000)}`)
-    retailcard.setAttribute("price",`${1000}`)
+    // retailcard.setAttribute("price",`${1000}`)
     const place = document.getElementById("cont");
     place.appendChild(retailcard);
     

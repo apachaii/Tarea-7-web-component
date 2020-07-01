@@ -75,7 +75,7 @@ class Markdown extends HTMLElement{
       );
 
       // Connect the button to the effect of translating
-      this.shadowRoot.querySelector('button').onclick= this.markdown_to_html;
+      this.shadowRoot.querySelector('button').onclick = this.markdown_to_html;
     }
   }
 }
