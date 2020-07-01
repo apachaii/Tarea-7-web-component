@@ -113,14 +113,18 @@ class productCard extends HTMLElement{
 
       if (original_price){
         this.shadowRoot.querySelector('#original-price').innerHTML = original_price;
+        this.shadowRoot.querySelector('#original-price').style.visibility = "visible";
       } else {
-        this.shadowRoot.querySelector('#original-price').remove();
+        this.shadowRoot.querySelector('#original-price').style.visibility = "hidden";
       }
+
+      this.shadowRoot.querySelector('#imageDisplay div').style.visibility = "visible";
+      this.shadowRoot.querySelector('#original-price').style.visibility = "visible";
     }
     // if there is no discount, don't show discount, and only display price
     else {
-      this.shadowRoot.querySelector('#imageDisplay div').remove();
-      this.shadowRoot.querySelector('#original-price').remove();
+      this.shadowRoot.querySelector('#imageDisplay div').style.visibility = "hidden";
+      this.shadowRoot.querySelector('#original-price').style.visibility = "hidden";
     }
   }
 
