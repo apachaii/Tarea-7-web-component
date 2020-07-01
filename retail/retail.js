@@ -107,7 +107,7 @@ class productCard extends HTMLElement{
       if (price){
         this.shadowRoot.querySelector('#price').innerHTML = price;
       } else {
-        const calculated_price = (1-parseInt(actual_discount)/100)*parseInt(original_price);
+        const calculated_price = Math.floor((1-parseInt(actual_discount)/100)*parseInt(original_price));
         this.shadowRoot.querySelector('#price').innerHTML = calculated_price;
       }
 
