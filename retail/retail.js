@@ -10,17 +10,21 @@ template.innerHTML=`
       position: relative;
     }
     #imageDisplay img{    
-      max-width: 100%;
-      max-height: 100px;
+      max-width: 200px;
+      max-height: 200px;
+    }
+    img{
+      width: 200px;
+      height: 200px;
     }
     #imageDisplay div{
       position: absolute;
       top: 0;
       right: 0;
       
-      width: 20%;
+      width: 200px;
       min-height: 30px;
-      height: 20%;
+      height: 200px;
       
       background-color: turquoise;
       
@@ -59,9 +63,9 @@ template.innerHTML=`
         <p id="discount">100%</p>
       </div>
     </div>
-    <h1 id="title">Titulo</h1>
-    <h1 id="price">1</h1>
-    <p id="original-price">2</p>
+    <h1 id="title"></h1>
+    <h1 id="price"></h1>
+    <p id="original-price"></p>
   </div>
 `
 const validDiscount = /^([0-9][0-9]?|100)%?$/;
@@ -76,6 +80,10 @@ class productCard extends HTMLElement{
       template.content.cloneNode(true)
     );
 
+    this.set_visuals();
+  }
+
+  set_visuals = () => {
     // Put the image
     this.shadowRoot.querySelector('img').src =
       this.getAttribute('retail-image');
@@ -118,6 +126,18 @@ class productCard extends HTMLElement{
       this.shadowRoot.querySelector('#imageDisplay div').remove();
       this.shadowRoot.querySelector('#original-price').remove();
     }
+  }
+
+  static get observedAttributes() { return [
+    'retail-image',
+    'title',
+    'discount',
+    'price',
+    'original_price',
+  ]; }
+
+  attributeChangedCallback() {
+    this.set_visuals();
   }
 }
 
